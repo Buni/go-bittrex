@@ -234,8 +234,8 @@ func (b *Bittrex) GetMarketHistory(market string) (trades []Trade, err error) {
 // Market
 
 // BuyLimit is used to place a limited buy order in a specific market.
-func (b *Bittrex) BuyLimit(market string, quantity, rate float64) (uuid string, err error) {
-	r, err := b.client.do("GET", "market/buylimit?market="+market+"&quantity="+strconv.FormatFloat(quantity, 'f', 8, 64)+"&rate="+strconv.FormatFloat(rate, 'f', 8, 64), "", true)
+func (b *Bittrex) BuyLimit(market, quantity, rate string) (uuid string, err error) {
+	r, err := b.client.do("GET", "market/buylimit?market="+market+"&quantity="+quantity+"&rate="+rate, "", true)
 	if err != nil {
 		return
 	}
@@ -253,8 +253,8 @@ func (b *Bittrex) BuyLimit(market string, quantity, rate float64) (uuid string, 
 }
 
 // SellLimit is used to place a limited sell order in a specific market.
-func (b *Bittrex) SellLimit(market string, quantity, rate float64) (uuid string, err error) {
-	r, err := b.client.do("GET", "market/selllimit?market="+market+"&quantity="+strconv.FormatFloat(quantity, 'f', 8, 64)+"&rate="+strconv.FormatFloat(rate, 'f', 8, 64), "", true)
+func (b *Bittrex) SellLimit(market, quantity, rate string) (uuid string, err error) {
+	r, err := b.client.do("GET", "market/selllimit?market="+market+"&quantity="+quantity+"&rate="+rate, "", true)
 	if err != nil {
 		return
 	}
